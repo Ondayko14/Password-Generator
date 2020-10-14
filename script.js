@@ -48,19 +48,12 @@ var charSelect = function() {
 
 var generatePassword = function () {
     var finalLength = passLength();
-    switch (finalLength) {
-        case "8-16":
-            console.log ("8-16");
-            break;
-
-        case "8-24":
-            console.log ("8-24");
-            break;
-
-        case "8-128":
-            console.log ("8-128");
-            break;
-    };
+    var finalChar = charSelect();
+    if (finalChar === "yes") {
+        for (var i = 0; i < finalLength; i++) {
+            
+        }
+    }
 }
 
 generatePassword();
