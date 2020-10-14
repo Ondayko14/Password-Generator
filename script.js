@@ -2,37 +2,23 @@
 var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var charsetAll = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-//Determines the length of the password. Options are (8-16, 8-24, and 8-128. Returns "8-16", "8-24" or "8-128".)
+//Determines the length of the password. Options are (8-128". Return an integer of 8-128 depending on the user input.)
 var passLength = function() {
-    var lengthQuestion = window.prompt("How long would you like your password to be? 8-16, 8-24, or 8-128?");
-    if (lengthQuestion === "8-16" || lengthQuestion === "8-24" || lengthQuestion === "8-128") {
+    var lengthQuestion = parseInt(window.prompt("How long would you like your password to be? Please insert a number between 8-128"));
+    if (lengthQuestion >= 8 && lengthQuestion <= 128) {
         var lengthConfirmation = window.confirm("Your password will be " + lengthQuestion + " characters long. is this okay?");
         if (lengthConfirmation) {
-            switch (lengthQuestion) {
-                case "8-16":
-                console.log("8-16");
-                return "8-16";
-                break;
-
-                case "8-24":
-                console.log("8-24");
-                return "8-24";
-                break;
-
-                case "8-128":
-                console.log("8-128");
-                return "8-128";
-                break;
-            }
+            console.log(lengthQuestion);
+            return lengthQuestion;
         } else {
             passLength();
         }
     } else {
-        window.alert("Invalid input, please insert 8-16, 8-24, or 8-128");
+        window.alert("Invalid input, please insert a number 8-128. Please note it should be input as '8', '9', '20', ect...");
         passLength();
     }
 }
-//Determines wetehr or not to use special characters in the password. (charsetAll = "yes" charsetNo = "no") Returns "yes" or "no"
+//Determines wether or not to use special characters in the password. (charsetAll = "yes" charsetNo = "no") Returns "yes" or "no"
 var charSelect = function() {
     var charQuestion = window.prompt("Would you like to use special characters in the creation  of this password? please enter YES or NO");
     if (charQuestion.toLowerCase() === "yes") {
