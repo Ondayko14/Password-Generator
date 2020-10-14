@@ -60,17 +60,26 @@ var charSelect = function() {
      
 }
 
-passLength();
-charSelect();
-/*
-
 var generatePassword = function () {
-    //Ask and verify selection of password length
-    var passType = window.prompt("Would you like to use speacial charcters in the creation of this password? YES or NO.")
-    window.alert("Password character type chosen.")
+    var finalLength = passLength();
+    switch (finalLength) {
+        case "8-16":
+            console.log ("8-16");
+            break;
 
+        case "8-24":
+            console.log ("8-24");
+            break;
 
+        case "8-128":
+            console.log ("8-128");
+            break;
+    };
 }
+
+generatePassword();
+
+/*
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
