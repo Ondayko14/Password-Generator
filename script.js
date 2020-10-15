@@ -74,16 +74,39 @@ var generatePassword = function () {
     var length = parseInt(howLong);
     window.alert("You have selected your character length");
     var charSelect = window.confirm("Would you like to use special characters?");
+    window.alert("You have selected your character type");
+    var upperCapSelect = window.confirm("Would you like to use upper case letters?");
+    window.alert("Your case prefrences have been noted");
+    var lowerCapSelect = window.confirm("Would you like to us lower case letters?");
+    window.alert("Your case prefrences have been noted");
     var charFinal = "";
+    var charsetLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var charsetLowerSpecial = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "#", "$", "%", "&", "'", "(", ")", "*", 
+    "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"];
+    var charsetUpperSpecial = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#", "$", "%", "&", "'", "(", ")", "*", 
+    "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"];
+    var charsetUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var charset = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var charsetAll = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "#", "$", "%", "&", "'", "(", ")", "*", 
     "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"];
     var result = "";
-    if (charSelect) {
+
+    if (charSelect && lowerCapSelect && !upperCapSelect) {
+        charFinal = charsetLowerSpecial;
+    } else if (charSelect && upperCapSelect && !lowerCapSelect) {
+        charFinal = charsetUpperSpecial;
+    } else if (charSelect && lowerCapSelect && upperCapSelect) {
         charFinal = charsetAll;
-    } else {
+    } else if (!charSelect && lowerCapSelect && !upperCapSelect) {
+        charFinal = charsetLower;
+    } else if (!charSelect && upperCapSelect && !lowerCapSelect) {
+        charFinal = charsetUpper;
+    } else if (!charSelect && lowerCapSelect && upperCapSelect) {
         charFinal = charset;
-    };
+    } else {
+        window.alert("incorret input, please try again");
+        return "Generate Password";
+    }
     if (length >= 8 && length <= 128) {
         for (i = 0; i < length; i++) {
             console.log(charFinal[Math.floor(Math.random() * charFinal.length)]);
