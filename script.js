@@ -72,24 +72,31 @@ var randomNumberGenerator = function(charsetselection) {
 var generatePassword = function () {
     var howLong = window.prompt("How long would you like your password to be? please choose a number between 8-128");
     var length = parseInt(howLong);
-    var howLongAlert = window.alert("You have selected " + window.prompt +" characters long.")
+    var howLongAlert = window.alert("You have selected your character length");
     var charSelect = window.confirm("Would you like to use special characters?");
     var charFinal = "";
     var charset = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var charsetAll = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "#", "$", "%", "&", "'", "(", ")", "*", 
     "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"];
+    var result = "";
     if (charSelect) {
         charFinal = charsetAll;
     } else {
         charFinal = charset;
-    }
-    
+    };
+    if (length >= 8 && length <= 128) {
+        for (i = 0; i < length; i++) {
+            console.log(charFinal[Math.floor(Math.random() * charFinal.length)]);
+            result += (charFinal[Math.floor(Math.random() * charFinal.length)]);
+        };
+        } else {
+            window.alert("Incorrect input, please try again");
+            
+        };
+    return result;
+
 
 }
-
-generatePassword();
-
-/*
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -105,5 +112,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword());
-
-*/
