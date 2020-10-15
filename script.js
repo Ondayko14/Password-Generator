@@ -46,6 +46,18 @@ var charSelect = function() {
     }
      
 }
+//Generates a random number based off of charset and charsetAll. Use randomGenerator(1) to access charset. Use randomGenerator() to access charsetAll.
+var randomNumberGenerator = function(charsetselection) {
+    if (charsetselection === 1) {
+        var randomNumber = Math.floor(Math.random() * charset.length);
+        return randomNumber; 
+    } else {
+        var randomNumber = Math.floor(Math.random() * charsetAll.length);
+        return randomNumber;
+    }
+
+}
+
 
 var generatePassword = function () {
     var finalLength = passLength();
