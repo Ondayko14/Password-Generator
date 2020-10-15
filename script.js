@@ -72,7 +72,7 @@ var randomNumberGenerator = function(charsetselection) {
 var generatePassword = function () {
     var howLong = window.prompt("How long would you like your password to be? please choose a number between 8-128");
     var length = parseInt(howLong);
-    var howLongAlert = window.alert("You have selected your character length");
+    window.alert("You have selected your character length");
     var charSelect = window.confirm("Would you like to use special characters?");
     var charFinal = "";
     var charset = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
