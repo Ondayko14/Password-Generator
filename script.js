@@ -100,25 +100,44 @@ var generatePassword = function () {
     var charsetNumericLowerSpecial = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var charsetNumericUpperSpecial = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var charsetNumericAll = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z","#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var charsetNumericChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     //End Result
     var result = "";
 
-    if (charSelect && lowerCapSelect && !upperCapSelect) {
+    if (charSelect && lowerCapSelect && !upperCapSelect && !numericSelect) {
         charFinal = charsetLowerSpecial;
-    } else if (charSelect && upperCapSelect && !lowerCapSelect) {
+    } else if (charSelect && upperCapSelect && !lowerCapSelect && !numericSelect) {
         charFinal = charsetUpperSpecial;
-    } else if (charSelect && lowerCapSelect && upperCapSelect) {
+    } else if (charSelect && lowerCapSelect && upperCapSelect && !numericSelect) {
         charFinal = charsetAll;
-    } else if (!charSelect && lowerCapSelect && !upperCapSelect) {
+    } else if (!charSelect && lowerCapSelect && !upperCapSelect && !numericSelect) {
         charFinal = charsetLower;
-    } else if (!charSelect && upperCapSelect && !lowerCapSelect) {
+    } else if (!charSelect && upperCapSelect && !lowerCapSelect && !numericSelect) {
         charFinal = charsetUpper;
-    } else if (!charSelect && lowerCapSelect && upperCapSelect) {
+    } else if (!charSelect && lowerCapSelect && upperCapSelect && !numericSelect) {
         charFinal = charset;
+    } else if (charSelect && !lowerCapSelect && !upperCapSelect && !numericSelect) {
+        charFinal = charsetSpecial;
+    } else if (charSelect && lowerCapSelect && !upperCapSelect && numericSelect) {
+        charFinal = charsetNumericLowerSpecial;
+    } else if (charSelect && upperCapSelect && !lowerCapSelect && numericSelect) {
+        charFinal = charsetNumericUpperSpecial;
+    } else if (charSelect && lowerCapSelect && upperCapSelect && numericSelect) {
+        charFinal = charsetNumericAll;
+    } else if (!charSelect && lowerCapSelect && !upperCapSelect && numericSelect) {
+        charFinal = charsetNumericLower;
+    } else if (!charSelect && upperCapSelect && !lowerCapSelect && numericSelect) {
+        charFinal = charsetNumericUpper;
+    } else if (!charSelect && lowerCapSelect && upperCapSelect && numericSelect) {
+        charFinal = charsetNumericChar;
+    } else if (charSelect && !lowerCapSelect && !upperCapSelect && numericSelect) {
+        charFinal = charsetNumericSpecial;
+    } else if (!charSelect && !lowerCapSelect && !upperCapSelect && numericSelect) {
+        charFinal = charsetNumeric;
     } else {
-        window.alert("incorret input, please try again");
-        return "Generate Password";
+        window.alert("Invalid Input, Please Try Again");
     }
+
     if (length >= 8 && length <= 128) {
         for (i = 0; i < length; i++) {
             console.log(charFinal[Math.floor(Math.random() * charFinal.length)]);
