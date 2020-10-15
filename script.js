@@ -64,11 +64,11 @@ var generatePassword = function () {
     var finalChar = charSelect();
     if (finalChar === "yes") {
         for (var i = 0; i < finalLength; i++) {
-            console.log(charsetAll[i]);
+            console.log(charsetAll[randomNumberGenerator()]);
         }
     } else {
         for (var i = 0; i < finalLength; i++) {
-            console.log(charset[i]);
+            console.log(charset[randomNumberGenerator(1)]);
         }
     }
 }
